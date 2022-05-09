@@ -42,7 +42,6 @@ async function run() {
         })
         // DELETE APP
         app.delete('/product/:id',async(req,res)=>{
-            console.log(req.params)
             const id =req.params.id;
             const query = { _id: ObjectId(id) };
             const result = await productCollection.deleteOne(query);
