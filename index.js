@@ -18,6 +18,9 @@ async function run() {
     try {
         await client.connect();
         const productCollection = client.db("tvsHouse").collection("product");
+
+        // GET API
+
         app.get('/product', async (req, res) => {
             const query = {};
             const cursor = productCollection.find(query);
@@ -30,6 +33,13 @@ async function run() {
             const product = await productCollection.findOne(query);
             res.send(product)
         });
+        // POST API
+        app.post('/addProduct', async(req,res)=>{
+            const newProduct = req.body;
+            const result = await productCollection.insertOne(newProduct)
+            console.log('adding new data');
+            res.send(result)
+        })
     }
     catch (error) {
         console.log(error)
