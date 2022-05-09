@@ -47,6 +47,7 @@ async function run() {
             const result = await productCollection.deleteOne(query);
             res.send(result)
         })
+        // UPDATE APP
     }
     catch (error) {
         console.log(error)
