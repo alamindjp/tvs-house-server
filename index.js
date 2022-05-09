@@ -40,6 +40,14 @@ async function run() {
             console.log('adding new data');
             res.send(result)
         })
+        // DELETE APP
+        app.delete('/product/:id',async(req,res)=>{
+            console.log(req.params)
+            const id =req.params.id;
+            const query = { _id: ObjectId(id) };
+            const result = await productCollection.deleteOne(query);
+            res.send(result)
+        })
     }
     catch (error) {
         console.log(error)
